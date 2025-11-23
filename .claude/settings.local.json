@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python import_fbx.py:*)",
+      "Bash(python test_remote.py:*)",
+      "WebSearch",
+      "Bash(\"C:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Build\\BatchFiles\\Build.bat\" TLEditor Win64 Development \"C:\\Users\\vital\\Projects\\TL\\TL.uproject\" -waitmutex)",
+      "Bash(python create_blueprint.py:*)",
+      "Bash(python:*)",
+      "WebFetch(domain:forums.unrealengine.com)",
+      "WebFetch(domain:github.com)",
+      "Bash($null)",
+      "Bash(dir \".claude\\context\" /b 2)",
+      "Bash(NUL)",
+      "Bash(dir:*)",
+      "WebFetch(domain:www.ultraboardgames.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

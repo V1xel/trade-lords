@@ -1,0 +1,28 @@
+{
+  "$schema": "https://code.claude.com/schema/settings.json",
+  "description": "TL Project - Claude Code automation settings",
+
+  "env": {
+    "PROJECT_NAME": "TL"
+  },
+
+  "hooks": {
+    "enabled": true
+  },
+
+  "permissions": {
+    "bash": {
+      "enabled": true
+    },
+    "files": {
+      "enabled": true
+    },
+    "web": {
+      "enabled": true
+    }
+  },
+
+  "mcp": {
+    "servers": {}
+  }
+}
