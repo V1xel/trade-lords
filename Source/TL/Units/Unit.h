@@ -10,7 +10,7 @@
 class ATLPlayerState;
 class AHexTile;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUnitPlaced, ATLPlayerState*, Owner, AHexTile*, Hex);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUnitPlacedOnHex, ATLPlayerState*, Owner, AHexTile*, Hex);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnProduction, EResourceType, Resource, int32, Amount);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnIncomeGenerated, int32, Gold);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUpgraded);
@@ -54,7 +54,7 @@ public:
 	UStaticMeshComponent* UnitMesh;
 
 	UPROPERTY(BlueprintAssignable, Category = "Unit")
-	FOnUnitPlaced OnUnitPlacedEvent;
+	FOnUnitPlacedOnHex OnUnitPlacedEvent;
 
 	UPROPERTY(BlueprintAssignable, Category = "Unit")
 	FOnProduction OnProduction;
@@ -66,7 +66,7 @@ public:
 	FOnUpgraded OnUpgraded;
 
 	UFUNCTION(BlueprintCallable, Category = "Unit")
-	void SetOwner(ATLPlayerState* Player);
+	void SetOwningPlayer(ATLPlayerState* Player);
 
 	UFUNCTION(BlueprintCallable, Category = "Unit")
 	void SetPlacedHex(AHexTile* Hex);

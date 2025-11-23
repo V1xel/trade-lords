@@ -164,3 +164,43 @@ To add new automation capabilities:
 3. **Complex operations**: Create new C++ Blueprint Function Library
 
 All C++ functions marked `UFUNCTION(BlueprintCallable)` are automatically callable from Python.
+
+## Content Generation
+
+### Generate All Content Assets
+
+Create all Blueprints and Data Assets for the TL project:
+
+```bash
+python generate_all_content.py
+```
+
+This creates 39 assets:
+- 5 Hex Tile Blueprints → `/Game/Hexes/`
+- 10 Unit Blueprints → `/Game/Units/`
+- 11 Resource Data Assets → `/Game/Resources/`
+- 9 Lord Data Assets → `/Game/Lords/`
+- 4 Contract Data Assets → `/Game/Contracts/`
+
+### Generate Individual Modules
+
+```bash
+python generate_hexes.py       # Hex tiles only
+python generate_units.py        # Units only
+python generate_resources.py   # Resources only
+python generate_lords.py        # Lords only
+python generate_contracts.py   # Contracts only
+```
+
+### Test Remote Connection
+
+```bash
+python test_remote.py
+```
+
+Expected output:
+```
+Testing remote execution connection to Unreal Engine...
+Connection successful!
+SUCCESS: Remote execution is working!
+```

@@ -7,9 +7,18 @@
 
 class ATLPlayerState;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnContractTaken, ATLPlayerState*, Player, UContractDefinition*, Contract);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnContractFulfilled, ATLPlayerState*, Player, UContractDefinition*, Contract);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnContractsRefreshed);
+USTRUCT(BlueprintType)
+struct FPlayerContracts
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<UContractDefinition*> Contracts;
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnContractTakenByPlayer, ATLPlayerState*, Player, UContractDefinition*, Contract);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnContractFulfilledByPlayer, ATLPlayerState*, Player, UContractDefinition*, Contract);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnContractPoolRefreshed);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TL_API UContractManagerComponent : public UActorComponent
@@ -23,16 +32,16 @@ public:
 	TArray<UContractDefinition*> AvailableContracts;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Contracts")
-	TMap<ATLPlayerState*, TArray<UContractDefinition*>> FulfilledContracts;
+	TMap<ATLPlayerState*, FPlayerContracts> FulfilledContracts;
 
 	UPROPERTY(BlueprintAssignable, Category = "Contracts")
-	FOnContractTaken OnContractTaken;
+	FOnContractTakenByPlayer OnContractTaken;
 
 	UPROPERTY(BlueprintAssignable, Category = "Contracts")
-	FOnContractFulfilled OnContractFulfilled;
+	FOnContractFulfilledByPlayer OnContractFulfilled;
 
 	UPROPERTY(BlueprintAssignable, Category = "Contracts")
-	FOnContractsRefreshed OnContractsRefreshed;
+	FOnContractPoolRefreshed OnContractsRefreshed;
 
 	UFUNCTION(BlueprintCallable, Category = "Contracts")
 	bool TakeContract(ATLPlayerState* Player, UContractDefinition* Contract);

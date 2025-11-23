@@ -10,7 +10,7 @@ class ATLPlayerState;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGameStart);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoundStart, int32, Round);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoundEnd, int32, Round);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPhaseChanged, EGamePhase, NewPhase);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGamePhaseChanged, EGamePhase, NewPhase);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGameEnd);
 
 UCLASS()
@@ -22,7 +22,7 @@ public:
 	ATLGameMode();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game")
-	int32 NumPlayers;
+	int32 TotalPlayers;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Game")
 	int32 CurrentRound;
@@ -46,7 +46,7 @@ public:
 	FOnRoundEnd OnRoundEnd;
 
 	UPROPERTY(BlueprintAssignable, Category = "Game")
-	FOnPhaseChanged OnPhaseChanged;
+	FOnGamePhaseChanged OnPhaseChanged;
 
 	UPROPERTY(BlueprintAssignable, Category = "Game")
 	FOnGameEnd OnGameEnd;

@@ -13,7 +13,8 @@
       "Bash(dir \".claude\\context\" /b 2)",
       "Bash(NUL)",
       "Bash(dir:*)",
-      "WebFetch(domain:www.ultraboardgames.com)"
+      "WebFetch(domain:www.ultraboardgames.com)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

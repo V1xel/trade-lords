@@ -14,7 +14,7 @@ AHexTile::AHexTile()
 	OwningPlayer = nullptr;
 }
 
-void AHexTile::PlaceUnit(AUnit* Unit, ATLPlayerState* Owner)
+void AHexTile::PlaceUnit(AUnit* Unit, ATLPlayerState* NewOwner)
 {
 	if (!Unit || bIsOccupied)
 	{
@@ -22,10 +22,10 @@ void AHexTile::PlaceUnit(AUnit* Unit, ATLPlayerState* Owner)
 	}
 
 	OccupyingUnit = Unit;
-	OwningPlayer = Owner;
+	OwningPlayer = NewOwner;
 	bIsOccupied = true;
 
-	OnUnitPlaced.Broadcast(Unit, Owner);
+	OnUnitPlaced.Broadcast(Unit, NewOwner);
 }
 
 void AHexTile::ClearUnit()

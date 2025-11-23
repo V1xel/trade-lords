@@ -34,7 +34,9 @@ def create_blueprint_with_properties(parent_class_path, blueprint_path, blueprin
         if isinstance(prop_value, bool):
             value_str = "True" if prop_value else "False"
         elif isinstance(prop_value, str):
-            value_str = f"'{prop_value}'"
+            # Escape single quotes in the string for generated Python code
+            escaped_value = prop_value.replace("'", "\\'")
+            value_str = f"'{escaped_value}'"
         elif isinstance(prop_value, (list, tuple)) and len(prop_value) == 4:
             value_str = f"unreal.LinearColor({prop_value[0]}, {prop_value[1]}, {prop_value[2]}, {prop_value[3]})"
         else:

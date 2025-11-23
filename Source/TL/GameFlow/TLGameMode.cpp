@@ -12,7 +12,7 @@ ATLGameMode::ATLGameMode()
 	GameStateClass = ATLGameState::StaticClass();
 	PlayerStateClass = ATLPlayerState::StaticClass();
 
-	NumPlayers = 2;
+	TotalPlayers = 2;
 	CurrentRound = 0;
 	MaxRounds = 6;
 	GamePhase = EGamePhase::Setup;

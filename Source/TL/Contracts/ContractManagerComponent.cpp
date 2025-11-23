@@ -26,10 +26,10 @@ bool UContractManagerComponent::FulfillContract(ATLPlayerState* Player, UContrac
 
 	if (!FulfilledContracts.Contains(Player))
 	{
-		FulfilledContracts.Add(Player, TArray<UContractDefinition*>());
+		FulfilledContracts.Add(Player, FPlayerContracts());
 	}
 
-	FulfilledContracts[Player].Add(Contract);
+	FulfilledContracts[Player].Contracts.Add(Contract);
 	OnContractFulfilled.Broadcast(Player, Contract);
 	return true;
 }

@@ -14,7 +14,7 @@ AUnit::AUnit()
 	PlacedOnHex = nullptr;
 }
 
-void AUnit::SetOwner(ATLPlayerState* Player)
+void AUnit::SetOwningPlayer(ATLPlayerState* Player)
 {
 	OwningPlayer = Player;
 }

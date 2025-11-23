@@ -8,7 +8,7 @@
 class AUnit;
 class ATLPlayerState;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUnitPlaced, AUnit*, Unit, ATLPlayerState*, Owner);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHexUnitPlaced, AUnit*, Unit, ATLPlayerState*, Owner);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHexSelected);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHexHovered);
 
@@ -48,7 +48,7 @@ public:
 	FLinearColor TileColor;
 
 	UPROPERTY(BlueprintAssignable, Category = "Hex")
-	FOnUnitPlaced OnUnitPlaced;
+	FOnHexUnitPlaced OnUnitPlaced;
 
 	UPROPERTY(BlueprintAssignable, Category = "Hex")
 	FOnHexSelected OnHexSelected;
@@ -57,7 +57,7 @@ public:
 	FOnHexHovered OnHexHovered;
 
 	UFUNCTION(BlueprintCallable, Category = "Hex")
-	void PlaceUnit(AUnit* Unit, ATLPlayerState* Owner);
+	void PlaceUnit(AUnit* Unit, ATLPlayerState* NewOwner);
 
 	UFUNCTION(BlueprintCallable, Category = "Hex")
 	void ClearUnit();
