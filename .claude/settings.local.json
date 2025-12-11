@@ -14,7 +14,8 @@
       "Bash(NUL)",
       "Bash(dir:*)",
       "WebFetch(domain:www.ultraboardgames.com)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

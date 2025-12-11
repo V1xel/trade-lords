@@ -8,6 +8,24 @@ This folder contains tool definitions and documentation for automating Unreal En
 
 ## Available Tools
 
+### [JSON Asset Generation](JSONAssetGeneration.md) ⭐ PRIMARY TOOL
+**Single generic tool** for generating all Unreal Engine assets from JSON definitions.
+
+**Use Cases:**
+- Generate all Units, Resources, Hexes, Lords from JSON
+- Ensure correct enum properties and no redundant fields
+- Maintain single source of truth for asset data
+- Data-driven asset pipeline
+
+**Usage:**
+```bash
+# Generate all assets
+python Tools/Python/generate_from_json.py --all
+
+# Generate specific module
+python Tools/Python/generate_from_json.py .claude/context/Gameplay/Units/units.json
+```
+
 ### [FBXImporter](FBXImporter.md)
 Command-line tool for importing FBX files into Unreal Engine with configurable import options.
 
@@ -22,7 +40,7 @@ Programmatic Blueprint asset creation with property configuration.
 **Use Cases:**
 - Generate Blueprint variants from C++ classes
 - Automated level design workflows
-- Data-driven asset generation
+- Used by JSON Asset Generation tool
 
 ### [BlueprintGraphHelper](BlueprintGraphHelper.md)
 C++ helper library for Blueprint graph manipulation exposed to Python.

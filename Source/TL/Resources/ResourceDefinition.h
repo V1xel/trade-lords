@@ -15,9 +15,6 @@ public:
 	EResourceType ResourceType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Resource")
-	FText ResourceName;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Resource")
 	EResourceCategory ResourceCategory;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Resource")

@@ -1,0 +1,129 @@
+{
+  "_meta": {
+    "asset_type": "dataasset",
+    "parent_class": "/Script/TL.ResourceDefinition",
+    "output_path": "/Game/Resources",
+    "enums": {
+      "ResourceType": {
+        "type": "/Script/TL.EResourceType",
+        "mapping": {
+          "Wool": "Wool",
+          "Milk": "Milk",
+          "Grain": "Grain",
+          "Cheese": "Cheese",
+          "Bread": "Bread",
+          "Whisky": "Whisky",
+          "Beer": "Beer",
+          "Cotton": "Cotton",
+          "Tobacco": "Tobacco",
+          "SugarCane": "SugarCane",
+          "Hops": "Hops"
+        }
+      },
+      "ResourceCategory": {
+        "type": "/Script/TL.EResourceCategory",
+        "mapping": {
+          "Basic": "Basic",
+          "Processed": "Processed",
+          "Import": "Import"
+        }
+      }
+    },
+    "property_mapping": {
+      "resource_type": "ResourceType",
+      "category": "ResourceCategory",
+      "end_game_value": "EndGameValue",
+      "base_market_price": "BaseMarketPrice"
+    }
+  },
+  "items": [
+    {
+      "name": "DA_Wool",
+      "resource_type": "Wool",
+      "category": "Basic",
+      "end_game_value": 1,
+      "base_market_price": 3,
+      "description": "Basic resource produced by Sheep"
+    },
+    {
+      "name": "DA_Milk",
+      "resource_type": "Milk",
+      "category": "Basic",
+      "end_game_value": 1,
+      "base_market_price": 3,
+      "description": "Basic resource produced by Cows"
+    },
+    {
+      "name": "DA_Grain",
+      "resource_type": "Grain",
+      "category": "Basic",
+      "end_game_value": 1,
+      "base_market_price": 3,
+      "description": "Basic resource produced by Fields"
+    },
+    {
+      "name": "DA_Cheese",
+      "resource_type": "Cheese",
+      "category": "Processed",
+      "end_game_value": 3,
+      "base_market_price": 6,
+      "description": "Processed resource made from Milk"
+    },
+    {
+      "name": "DA_Bread",
+      "resource_type": "Bread",
+      "category": "Processed",
+      "end_game_value": 3,
+      "base_market_price": 6,
+      "description": "Processed resource made from Grain"
+    },
+    {
+      "name": "DA_Whisky",
+      "resource_type": "Whisky",
+      "category": "Processed",
+      "end_game_value": 4,
+      "base_market_price": 8,
+      "description": "Processed resource made from Grain, high value"
+    },
+    {
+      "name": "DA_Beer",
+      "resource_type": "Beer",
+      "category": "Processed",
+      "end_game_value": 3,
+      "base_market_price": 6,
+      "description": "Processed resource made from Grain by Oswald's Brewery"
+    },
+    {
+      "name": "DA_Cotton",
+      "resource_type": "Cotton",
+      "category": "Import",
+      "end_game_value": 2,
+      "base_market_price": 5,
+      "description": "Import good obtained from export contracts"
+    },
+    {
+      "name": "DA_Tobacco",
+      "resource_type": "Tobacco",
+      "category": "Import",
+      "end_game_value": 2,
+      "base_market_price": 5,
+      "description": "Import good obtained from export contracts"
+    },
+    {
+      "name": "DA_SugarCane",
+      "resource_type": "SugarCane",
+      "category": "Import",
+      "end_game_value": 2,
+      "base_market_price": 5,
+      "description": "Import good obtained from export contracts"
+    },
+    {
+      "name": "DA_Hops",
+      "resource_type": "Hops",
+      "category": "Import",
+      "end_game_value": 2,
+      "base_market_price": 4,
+      "description": "Import good obtained from export contracts"
+    }
+  ]
+}

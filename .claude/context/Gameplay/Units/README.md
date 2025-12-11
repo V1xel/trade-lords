@@ -4,6 +4,19 @@
 
 Units are placed on hexes to produce resources, generate income, or process goods. Each unit type has specific terrain requirements and gameplay functions.
 
+## units.json - Unit Definitions
+
+All unit properties are defined in `units.json` in this folder. This JSON file is the single source of truth for unit data and is used by `Tools/Python/generate_units.py` to create Blueprint assets with correct properties.
+
+### Usage
+
+Generate all unit blueprints from JSON:
+```bash
+python Tools/Python/generate_units.py
+```
+
+This ensures all blueprints have consistent, correct properties matching the game design documentation.
+
 ## Unit Categories
 
 ### Production Units (Basic Goods)

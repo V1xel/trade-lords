@@ -39,10 +39,19 @@ class UnrealRemoteExecutor:
             print(f"Started remote execution, discovering nodes...")
 
             # Wait for nodes to be discovered
-            timeout = 5
+            timeout = 30  # Increased timeout to 30 seconds
             start_time = time.time()
+            last_msg_time = start_time
+
             while time.time() - start_time < timeout:
                 nodes = self.remote_exec.remote_nodes
+
+                # Print progress every 3 seconds
+                if time.time() - last_msg_time > 3:
+                    elapsed = int(time.time() - start_time)
+                    print(f"  Still searching... ({elapsed}/{timeout}s)")
+                    last_msg_time = time.time()
+
                 if nodes:
                     # Connect to first available node
                     node = nodes[0]
@@ -54,7 +63,12 @@ class UnrealRemoteExecutor:
                     return True
                 time.sleep(0.1)
 
-            print("No Unreal Engine nodes found")
+            print("No Unreal Engine nodes found after 30 seconds")
+            print("Check that:")
+            print("  - Unreal Editor is running")
+            print("  - Python plugin is enabled")
+            print("  - Remote execution is enabled in Project Settings")
+            print("  - Windows Firewall allows Python.exe")
             return False
 
         except Exception as e:

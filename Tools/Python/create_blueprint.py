@@ -28,32 +28,64 @@ def create_blueprint_with_properties(parent_class_path, blueprint_path, blueprin
     if not executor.connect():
         return {"success": False, "result": "Failed to connect to Unreal Engine"}
 
-    # Build property assignments
-    property_assignments = ""
+    # Separate enum and non-enum properties
+    enum_properties = {}
+    regular_properties = {}
+
     for prop_name, prop_value in properties.items():
+        if isinstance(prop_value, dict) and 'enum' in prop_value:
+            enum_properties[prop_name] = prop_value
+        else:
+            regular_properties[prop_name] = prop_value
+
+    # Build enum class retrieval code
+    enum_setup = ""
+    if enum_properties:
+        enum_setup = "\n        # Get enum classes from the CDO\n"
+        seen_enum_types = {}
+        for prop_name, prop_value in enum_properties.items():
+            enum_type = prop_value['enum']
+            # Extract the enum class name (e.g., '/Script/TL.EUnitType' -> 'UnitType')
+            enum_class_name = enum_type.split('.')[-1][1:]  # Remove 'E' prefix
+            if enum_class_name not in seen_enum_types:
+                enum_setup += f"        {enum_class_name} = type(cdo.get_editor_property('{prop_name}'))\n"
+                seen_enum_types[enum_class_name] = True
+
+    # Build property assignments for regular properties
+    property_assignments = ""
+    for prop_name, prop_value in regular_properties.items():
         if isinstance(prop_value, bool):
             value_str = "True" if prop_value else "False"
         elif isinstance(prop_value, str):
-            # Escape single quotes in the string for generated Python code
             escaped_value = prop_value.replace("'", "\\'")
             value_str = f"'{escaped_value}'"
         elif isinstance(prop_value, (list, tuple)) and len(prop_value) == 4:
             value_str = f"unreal.LinearColor({prop_value[0]}, {prop_value[1]}, {prop_value[2]}, {prop_value[3]})"
         else:
             value_str = str(prop_value)
-
         property_assignments += f"        cdo.set_editor_property('{prop_name}', {value_str})\n"
+
+    # Build property assignments for enum properties
+    for prop_name, prop_value in enum_properties.items():
+        enum_type = prop_value['enum']
+        enum_value = prop_value['value']
+        enum_class_name = enum_type.split('.')[-1][1:]  # Remove 'E' prefix
+        # Convert enum value to UPPERCASE with underscores
+        # Handle CamelCase by adding underscores before capitals (e.g., 'SugarCane' -> 'SUGAR_CANE')
+        import re
+        enum_value_snake = re.sub(r'(?<!^)(?=[A-Z])', '_', enum_value)
+        enum_value_upper = enum_value_snake.upper()
+        property_assignments += f"        cdo.set_editor_property('{prop_name}', {enum_class_name}.{enum_value_upper})\n"
 
     code = f"""
 import unreal
 
 # Get asset tools
 asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
-editor_asset_lib = unreal.EditorAssetLibrary()
 
 # Ensure destination directory exists
-if not editor_asset_lib.does_directory_exist('{blueprint_path}'):
-    editor_asset_lib.make_directory('{blueprint_path}')
+if not unreal.EditorAssetLibrary.does_directory_exist('{blueprint_path}'):
+    unreal.EditorAssetLibrary.make_directory('{blueprint_path}')
 
 # Create Blueprint factory
 factory = unreal.BlueprintFactory()
@@ -74,14 +106,14 @@ if asset:
     bp_class = asset.generated_class()
     if bp_class:
         cdo = unreal.get_default_object(bp_class)
-
+{enum_setup}
         # Set properties
 {property_assignments}
 
         print(f'Properties configured for {{cdo.get_class().get_name()}}')
 
     # Save the asset
-    editor_asset_lib.save_loaded_asset(asset)
+    unreal.EditorAssetLibrary.save_loaded_asset(asset)
     print(f'Saved Blueprint: {blueprint_path}/{blueprint_name}')
 else:
     print(f'Failed to create Blueprint: {blueprint_path}/{blueprint_name}')

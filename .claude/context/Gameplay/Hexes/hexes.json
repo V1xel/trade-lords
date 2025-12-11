@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "asset_type": "blueprint",
+    "parent_class": "/Script/TL.HexTile",
+    "output_path": "/Game/Hexes",
+    "enums": {
+      "TerrainType": {
+        "type": "/Script/TL.ETerrainType",
+        "mapping": {
+          "Grassland": "Grassland",
+          "Forest": "Forest",
+          "Mountain": "Mountain",
+          "Loch": "Loch",
+          "River": "River"
+        }
+      }
+    },
+    "property_mapping": {
+      "terrain_type": "TerrainType",
+      "terrain_cost": "TerrainCost",
+      "tile_color": "TileColor",
+      "is_river_delta": "bIsRiverDelta"
+    }
+  },
+  "items": [
+    {
+      "name": "BP_HexGrassland",
+      "terrain_type": "Grassland",
+      "terrain_cost": 2,
+      "tile_color": [0.176, 0.314, 0.086, 1.0],
+      "is_river_delta": false,
+      "description": "Grassland hex - supports production units and processing buildings"
+    },
+    {
+      "name": "BP_HexForest",
+      "terrain_type": "Forest",
+      "terrain_cost": 3,
+      "tile_color": [0.102, 0.188, 0.063, 1.0],
+      "is_river_delta": false,
+      "description": "Forest hex - supports Woodcutter units"
+    },
+    {
+      "name": "BP_HexMountain",
+      "terrain_type": "Mountain",
+      "terrain_cost": 4,
+      "tile_color": [0.439, 0.439, 0.439, 1.0],
+      "is_river_delta": false,
+      "description": "Mountain hex - supports Miner units"
+    },
+    {
+      "name": "BP_HexLoch",
+      "terrain_type": "Loch",
+      "terrain_cost": 0,
+      "tile_color": [0.118, 0.302, 0.545, 1.0],
+      "is_river_delta": false,
+      "description": "Loch (lake) hex - supports Fisherman units (Caspian only)"
+    },
+    {
+      "name": "BP_HexRiver",
+      "terrain_type": "River",
+      "terrain_cost": 2,
+      "tile_color": [0.2, 0.4, 0.5, 1.0],
+      "is_river_delta": false,
+      "description": "River hex - used for shipping routes"
+    }
+  ]
+}

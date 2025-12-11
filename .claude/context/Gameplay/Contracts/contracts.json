@@ -1,0 +1,164 @@
+{
+  "_meta": {
+    "asset_type": "dataasset",
+    "parent_class": "/Script/TL.ContractDefinition",
+    "output_path": "/Game/Contracts",
+    "enums": {
+      "ImportGoodReward": {
+        "type": "/Script/TL.EResourceType",
+        "mapping": {
+          "Cotton": "Cotton",
+          "Tobacco": "Tobacco",
+          "SugarCane": "SugarCane",
+          "Hops": "Hops"
+        }
+      }
+    },
+    "property_mapping": {
+      "contract_name": "ContractName",
+      "gold_reward": "GoldReward",
+      "import_good_reward": "ImportGoodReward",
+      "import_good_amount": "ImportGoodAmount",
+      "victory_points": "VictoryPoints"
+    }
+  },
+  "items": [
+    {
+      "name": "DA_WoolExportSmall",
+      "contract_name": "Wool Export (Small)",
+      "required_resources": {
+        "Wool": 3
+      },
+      "gold_reward": 8,
+      "import_good_reward": "Cotton",
+      "import_good_amount": 1,
+      "victory_points": 5,
+      "description": "Small wool export contract"
+    },
+    {
+      "name": "DA_WoolExportLarge",
+      "contract_name": "Wool Export (Large)",
+      "required_resources": {
+        "Wool": 6
+      },
+      "gold_reward": 15,
+      "import_good_reward": "Tobacco",
+      "import_good_amount": 2,
+      "victory_points": 10,
+      "description": "Large wool export contract"
+    },
+    {
+      "name": "DA_CheeseExportSmall",
+      "contract_name": "Cheese Export (Small)",
+      "required_resources": {
+        "Cheese": 3
+      },
+      "gold_reward": 12,
+      "import_good_reward": "Cotton",
+      "import_good_amount": 1,
+      "victory_points": 8,
+      "description": "Small cheese export contract"
+    },
+    {
+      "name": "DA_CheeseExportLarge",
+      "contract_name": "Cheese Export (Large)",
+      "required_resources": {
+        "Cheese": 6
+      },
+      "gold_reward": 22,
+      "import_good_reward": "SugarCane",
+      "import_good_amount": 2,
+      "victory_points": 15,
+      "description": "Large cheese export contract"
+    },
+    {
+      "name": "DA_BreadExportSmall",
+      "contract_name": "Bread Export (Small)",
+      "required_resources": {
+        "Bread": 3
+      },
+      "gold_reward": 12,
+      "import_good_reward": "Hops",
+      "import_good_amount": 1,
+      "victory_points": 8,
+      "description": "Small bread export contract"
+    },
+    {
+      "name": "DA_BreadExportLarge",
+      "contract_name": "Bread Export (Large)",
+      "required_resources": {
+        "Bread": 6
+      },
+      "gold_reward": 22,
+      "import_good_reward": "Cotton",
+      "import_good_amount": 3,
+      "victory_points": 15,
+      "description": "Large bread export contract"
+    },
+    {
+      "name": "DA_WhiskyExportSmall",
+      "contract_name": "Whisky Export (Small)",
+      "required_resources": {
+        "Whisky": 2
+      },
+      "gold_reward": 14,
+      "import_good_reward": "Tobacco",
+      "import_good_amount": 2,
+      "victory_points": 10,
+      "description": "Small whisky export contract"
+    },
+    {
+      "name": "DA_WhiskyExportLarge",
+      "contract_name": "Whisky Export (Large)",
+      "required_resources": {
+        "Whisky": 4
+      },
+      "gold_reward": 26,
+      "import_good_reward": "SugarCane",
+      "import_good_amount": 3,
+      "victory_points": 18,
+      "description": "Large whisky export contract"
+    },
+    {
+      "name": "DA_MixedGoods1",
+      "contract_name": "Mixed Goods Export",
+      "required_resources": {
+        "Wool": 2,
+        "Cheese": 2,
+        "Bread": 1
+      },
+      "gold_reward": 18,
+      "import_good_reward": "Hops",
+      "import_good_amount": 2,
+      "victory_points": 12,
+      "description": "Mixed goods contract requiring wool, cheese, and bread"
+    },
+    {
+      "name": "DA_MixedGoods2",
+      "contract_name": "Premium Goods Export",
+      "required_resources": {
+        "Whisky": 2,
+        "Cheese": 3
+      },
+      "gold_reward": 24,
+      "import_good_reward": "Tobacco",
+      "import_good_amount": 3,
+      "victory_points": 16,
+      "description": "Mixed goods contract requiring whisky and cheese"
+    },
+    {
+      "name": "DA_MixedGoods3",
+      "contract_name": "Bulk Export",
+      "required_resources": {
+        "Wool": 3,
+        "Bread": 3,
+        "Whisky": 1
+      },
+      "gold_reward": 22,
+      "import_good_reward": "Cotton",
+      "import_good_amount": 4,
+      "victory_points": 14,
+      "description": "Large mixed goods contract"
+    }
+  ]
+}

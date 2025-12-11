@@ -1,0 +1,182 @@
+{
+  "_meta": {
+    "asset_type": "blueprint",
+    "parent_class": "/Script/TL.Unit",
+    "output_path": "/Game/Units",
+    "enums": {
+      "UnitType": {
+        "type": "/Script/TL.EUnitType",
+        "mapping": {
+          "Sheep": "Sheep",
+          "Cow": "Cow",
+          "Field": "Field",
+          "Woodcutter": "Woodcutter",
+          "Miner": "Miner",
+          "Fisherman": "Fisherman",
+          "Cheese Dairy": "CheeseDairy",
+          "Bakery": "Bakery",
+          "Distillery": "Distillery",
+          "Brewery": "Brewery"
+        }
+      },
+      "RequiredTerrain": {
+        "type": "/Script/TL.ETerrainType",
+        "mapping": {
+          "Grassland": "Grassland",
+          "Forest": "Forest",
+          "Mountain": "Mountain",
+          "Loch": "Loch"
+        }
+      },
+      "ProducesResource": {
+        "type": "/Script/TL.EResourceType",
+        "mapping": {
+          "Wool": "Wool",
+          "Milk": "Milk",
+          "Grain": "Grain",
+          "Cheese": "Cheese",
+          "Bread": "Bread",
+          "Whisky": "Whisky",
+          "Beer": "Beer"
+        }
+      },
+      "ConsumesResource": {
+        "type": "/Script/TL.EResourceType",
+        "mapping": {
+          "Milk": "Milk",
+          "Grain": "Grain"
+        }
+      }
+    },
+    "property_mapping": {
+      "display_name": "UnitType",
+      "unit_cost": "UnitCost",
+      "terrain_type": "RequiredTerrain",
+      "produces_resource": "ProducesResource",
+      "consumes_resource": "ConsumesResource",
+      "generates_income": "GeneratesIncome"
+    }
+  },
+  "items": [
+    {
+      "name": "BP_Sheep",
+      "display_name": "Sheep",
+      "category": "Production",
+      "unit_cost": 5,
+      "terrain_type": "Grassland",
+      "produces_resource": "Wool",
+      "consumes_resource": null,
+      "generates_income": 0,
+      "description": "Basic production unit that produces Wool"
+    },
+    {
+      "name": "BP_Cow",
+      "display_name": "Cow",
+      "category": "Production",
+      "unit_cost": 6,
+      "terrain_type": "Grassland",
+      "produces_resource": "Milk",
+      "consumes_resource": null,
+      "generates_income": 0,
+      "description": "Production unit that produces Milk"
+    },
+    {
+      "name": "BP_Field",
+      "display_name": "Field",
+      "category": "Production",
+      "unit_cost": 4,
+      "terrain_type": "Grassland",
+      "produces_resource": "Grain",
+      "consumes_resource": null,
+      "generates_income": 0,
+      "description": "Production unit that produces Grain"
+    },
+    {
+      "name": "BP_Woodcutter",
+      "display_name": "Woodcutter",
+      "category": "Worker",
+      "unit_cost": 5,
+      "terrain_type": "Forest",
+      "produces_resource": null,
+      "consumes_resource": null,
+      "generates_income": 4,
+      "upgradeable": true,
+      "upgraded_income": 6,
+      "description": "Worker unit that generates passive gold income on Forest terrain"
+    },
+    {
+      "name": "BP_Miner",
+      "display_name": "Miner",
+      "category": "Worker",
+      "unit_cost": 6,
+      "terrain_type": "Mountain",
+      "produces_resource": null,
+      "consumes_resource": null,
+      "generates_income": 6,
+      "upgradeable": true,
+      "upgraded_income": 8,
+      "description": "Worker unit that generates passive gold income on Mountain terrain"
+    },
+    {
+      "name": "BP_Fisherman",
+      "display_name": "Fisherman",
+      "category": "Worker",
+      "unit_cost": 6,
+      "terrain_type": "Loch",
+      "produces_resource": null,
+      "consumes_resource": null,
+      "generates_income": 4,
+      "lord_exclusive": "Caspian",
+      "description": "Worker unit exclusive to Lord Caspian, generates income on Loch terrain"
+    },
+    {
+      "name": "BP_CheeseDairy",
+      "display_name": "Cheese Dairy",
+      "category": "Processing",
+      "unit_cost": 6,
+      "terrain_type": "Grassland",
+      "produces_resource": "Cheese",
+      "consumes_resource": "Milk",
+      "generates_income": 0,
+      "processing_ratio": "1:1",
+      "description": "Processing building that converts Milk into Cheese"
+    },
+    {
+      "name": "BP_Bakery",
+      "display_name": "Bakery",
+      "category": "Processing",
+      "unit_cost": 6,
+      "terrain_type": "Grassland",
+      "produces_resource": "Bread",
+      "consumes_resource": "Grain",
+      "generates_income": 0,
+      "processing_ratio": "1:1",
+      "description": "Processing building that converts Grain into Bread"
+    },
+    {
+      "name": "BP_Distillery",
+      "display_name": "Distillery",
+      "category": "Processing",
+      "unit_cost": 6,
+      "terrain_type": "Grassland",
+      "produces_resource": "Whisky",
+      "consumes_resource": "Grain",
+      "generates_income": 0,
+      "processing_ratio": "1:1",
+      "description": "Processing building that converts Grain into Whisky"
+    },
+    {
+      "name": "BP_Brewery",
+      "display_name": "Brewery",
+      "category": "Processing",
+      "unit_cost": 6,
+      "terrain_type": "Grassland",
+      "produces_resource": "Beer",
+      "consumes_resource": "Grain",
+      "generates_income": 0,
+      "processing_ratio": "1:1",
+      "lord_exclusive": "Oswald",
+      "description": "Processing building exclusive to Lord Oswald, converts Grain into Beer"
+    }
+  ]
+}
